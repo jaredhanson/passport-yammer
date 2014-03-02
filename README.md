@@ -1,3 +1,5 @@
+> Fix for Yammer's new authentication method ([issue #3](https://github.com/jaredhanson/passport-yammer/issues/3)), which needs the auth token specified in an Authorization: Bearer <xxx> header. Credits to [oscarrenalias](https://github.com/oscarrenalias).
+
 # Passport-Yammer
 
 [Passport](https://github.com/jaredhanson/passport) strategy for authenticating
