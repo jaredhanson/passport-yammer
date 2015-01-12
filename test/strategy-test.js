@@ -1,7 +1,7 @@
 var vows = require('vows');
 var assert = require('assert');
 var util = require('util');
-var YammerStrategy = require('passport-yammer/strategy');
+var YammerStrategy = require('passport-yammer').Strategy;
 
 
 vows.describe('YammerStrategy').addBatch({
