@@ -66,6 +66,7 @@ For a complete, working example, refer to the [login example](https://github.com
 ## Credits
 
   - [Jared Hanson](http://github.com/jaredhanson)
+  - [Desmond Duggan](http://github.com/jaredhanson)
 
 ## License
 
