@@ -1,11 +1,11 @@
 {
-  "name": "passport-yammer",
-  "version": "0.1.2",
+  "name": "passport-yammer3",
+  "version": "0.1.4",
   "description": "Yammer authentication strategy for Passport.",
   "keywords": ["passport", "yammer", "auth", "authn", "authentication", "identity"],
   "repository": {
     "type": "git",
-    "url": "git://github.com/jaredhanson/passport-yammer.git"
+    "url": "git://github.com/desduggan/passport-yammer.git"
   },
   "bugs": {
     "url": "http://github.com/jaredhanson/passport-yammer/issues"
@@ -15,6 +15,13 @@
     "email": "jaredhanson@gmail.com",
     "url": "http://www.jaredhanson.net/"
   },
+  "contributors": [
+     {
+      "name": "Desmond Duggan",
+      "email": "desmondrduggan@gmail.com",
+      "url": "http://www.desmondrduggan.com/"
+    } 
+  ],
   "licenses": [ {
     "type": "MIT",
     "url": "http://www.opensource.org/licenses/MIT" 

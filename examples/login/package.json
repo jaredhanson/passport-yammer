@@ -2,9 +2,12 @@
   "name": "passport-yammer-examples-login",
   "version": "0.0.0",
   "dependencies": {
-    "express": ">= 0.0.0",
-    "ejs": ">= 0.0.0",
-    "passport": ">= 0.0.0",
-    "passport-yammer": ">= 0.0.0"
+    "body-parser": "~1.15.1",
+    "ejs": ">= 2.4.1",
+    "express": "3.21.2",
+    "express-session": "~1.13.0",
+    "passport": "0.3.2",
+    "passport-oauth": "^1.0.0",
+    "passport-yammer3": "^0.1.4"
   }
 }

@@ -1,11 +1,12 @@
 var express = require('express')
   , passport = require('passport')
   , util = require('util')
-  , YammerStrategy = require('passport-yammer').Strategy;
-
+  , YammerStrategy = require('passport-yammer3').Strategy;
+var bodyParser = require('body-parser');
+var session = require('express-session');
 var YAMMER_CONSUMER_KEY = "--insert-yammer-consumer-key-here--"
 var YAMMER_CONSUMER_SECRET = "--insert-yammer-consumer-secret-here--";
-
+var path = require('path');
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -22,7 +23,6 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-
 // Use the YammerStrategy within Passport.
 //   Strategies in Passport require a `verify` function, which accept
 //   credentials (in this case, an accessToken, refreshToken, and Yammer
@@ -33,40 +33,33 @@ passport.use(new YammerStrategy({
     callbackURL: "http://127.0.0.1:3000/auth/yammer/callback"
   },
   function(accessToken, refreshToken, profile, done) {
+    // console.log('strategy callback')
     // asynchronous verification, for effect...
-    process.nextTick(function () {
+    return done(null, profile);    
+    // process.nextTick(function () {
       
-      // To keep the example simple, the user's Yammer profile is returned to
-      // represent the logged-in user.  In a typical application, you would want
-      // to associate the Yammer account with a user record in your database,
-      // and return that user instead.
-      return done(null, profile);
-    });
+    //   // To keep the example simple, the user's Yammer profile is returned to
+    //   // represent the logged-in user.  In a typical application, you would want
+    //   // to associate the Yammer account with a user record in your database,
+    //   // and return that user instead.
+    //   return done(null, profile);
+    // });
   }
 ));
 
 
-
-
-var app = express.createServer();
-
-// configure Express
-app.configure(function() {
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
-  app.use(express.logger());
-  app.use(express.cookieParser());
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(express.session({ secret: 'keyboard cat' }));
-  // Initialize Passport!  Also use passport.session() middleware, to support
-  // persistent login sessions (recommended).
-  app.use(passport.initialize());
-  app.use(passport.session());
-  app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
-});
-
+var app = express();
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use(express.cookieParser());
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(express.session({ secret: 'keyboard cat' }));
+// Initialize Passport!  Also use passport.session() middleware, to support
+// persistent login sessions (recommended).
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(app.router);
 
 app.get('/', function(req, res){
   res.render('index', { user: req.user });
@@ -100,6 +93,11 @@ app.get('/auth/yammer',
 app.get('/auth/yammer/callback', 
   passport.authenticate('yammer', { failureRedirect: '/login' }),
   function(req, res) {
+    // console.log('auth yammer callback')  
+    // console.log(req.user)
+    if (req.query['code']) {
+      // console.log(req.query['code'])
+    }
     res.redirect('/');
   });
 
@@ -109,7 +107,6 @@ app.get('/logout', function(req, res){
 });
 
 app.listen(3000);
-
 
 // Simple route middleware to ensure user is authenticated.
 //   Use this route middleware on any resource that needs to be protected.  If

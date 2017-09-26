@@ -11,7 +11,7 @@ unobtrusively integrated into any application or framework that supports
 
 ## Install
 
-    $ npm install passport-yammer
+    $ npm install passport-yammer3
 
 ## Usage
 
@@ -54,7 +54,7 @@ application:
 
 ## Examples
 
-For a complete, working example, refer to the [login example](https://github.com/jaredhanson/passport-yammer/tree/master/examples/login).
+For a complete, working example, refer to the [login example](https://github.com/desduggan/passport-yammer/tree/master/examples/login).
 
 ## Tests
 
@@ -66,6 +66,7 @@ For a complete, working example, refer to the [login example](https://github.com
 ## Credits
 
   - [Jared Hanson](http://github.com/jaredhanson)
+  - [Desmond Duggan](http://github.com/jaredhanson)
 
 ## License
 
